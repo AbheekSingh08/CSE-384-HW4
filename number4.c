@@ -2,16 +2,18 @@
 #include <unistd.h>
 #include <signal.h>
 
-void wait(int signum) {
-// waiting til just after alarm
-}
+void delayed_message(int seconds, const char* message)
+{
+    signal(SIGALRM, [](int sig){ printf("%s\n", message); });
 
-int main() {
-    alarm(10);
-    signal(SIGALRM, wait);
+    alarm(seconds);
 
     pause();
+}
 
-    printf("Delayed message\n");
+int main()
+{
+    delayed_message(10, "Delayed message");
+
     return 0;
 }
