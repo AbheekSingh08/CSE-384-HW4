@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <arpa/inet.h>
-#include <netinet/in.h>
 
 const char *process_ip_address(const char *ip_address_string, uint32_t *ip_address_integer) {
     struct in_addr in_address;
-    int result = inet_pton(AF_INET, ip_address_string, &in_address);
+    int result = inet_aton(ip_address_string, &in_address);
 
-    if (result > 0) {
+    if (result) {
         *ip_address_integer = ntohl(in_address.s_addr);
         return "The integer value of the IP address %s is %u\n";
     } else {
