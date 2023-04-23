@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
             exit(1);
         }
         mode = file_stat.st_mode;
-    } // The struct stat is no longer used after this point.
+    } 
 
     print_permissions(mode);
 
