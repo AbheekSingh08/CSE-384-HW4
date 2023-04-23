@@ -2,14 +2,14 @@
 #include <arpa/inet.h>
 
 int main() {
-    int ip_address = -1;
-    struct in_addr in_address;
-    char *ip_address_string;
+    int ip_int = -1;
+    struct in_addr ip_addr;
 
-    in_address.s_addr = (in_addr_t)ip_address;
-    ip_address_string = inet_ntoa(in_address);
+    // Assign the integer value to s_addr
+    ip_addr.s_addr = (in_addr_t)ip_int;
 
-    printf("%s\n", ip_address_string ? ip_address_string : "Error converting -1 to an IP address.");
+    // Print the IP address string directly using printf and inet_ntoa
+    printf("IP address: %s\n", inet_ntoa(ip_addr));
 
     return 0;
 }
